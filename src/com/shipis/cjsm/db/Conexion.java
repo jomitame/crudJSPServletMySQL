@@ -14,7 +14,7 @@ public class Conexion {
             //Register JDBC driver
             Class.forName(Data.JDBC_DRIVER);
             //Open a connection
-            conn = DriverManager.getConnection(Data.DB_URL,Data.USER,Data. PASS);
+            conn = DriverManager.getConnection(Data.DB_URL, Data.USER, Data.PASS);
 
         }catch(SQLException se){
             //Handle errors for JDBC

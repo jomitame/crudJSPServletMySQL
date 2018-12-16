@@ -17,7 +17,7 @@
         <h2>Ingreso</h2>
     </div>
 
-    <form class="w3-container" method="post">
+    <form action="LoginController" class="w3-container" method="post">
         <p>
             <label for="usuario">Usuario</label>
             <input class="w3-input" type="text" name="fUsuario" id="usuario"></p>
