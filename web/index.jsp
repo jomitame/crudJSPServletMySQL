@@ -20,10 +20,10 @@
     <form class="w3-container" method="post">
         <p>
             <label for="usuario">Usuario</label>
-            <input class="w3-input" type="text" name="usuario" id="usuario"></p>
+            <input class="w3-input" type="text" name="fUsuario" id="usuario"></p>
         <p>
             <label for="contra">Contraseña</label>
-            <input class="w3-input" type="password" name="contra" id="contra"></p>
+            <input class="w3-input" type="password" name="fContra" id="contra"></p>
         <p>
             <input type="submit" value="Ingresar" class="w3-button w3-white w3-border w3-border-blue w3-round-large">
             <button class="w3-button w3-white w3-border w3-border-blue w3-round-large">Registrarse</button>
