@@ -36,6 +36,12 @@ public class LoginUser {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try{
+                if(con!=null){con.close();}
+            }catch (SQLException se){
+                se.printStackTrace();
+            }
         }
 
         return isValidUser;

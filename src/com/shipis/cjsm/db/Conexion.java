@@ -22,12 +22,6 @@ public class Conexion {
         }catch (Exception e) {
             //Handle errors for Class.forName
             e.printStackTrace();
-        }finally {
-            try{
-                if(conn!=null){conn.close();}
-            }catch (SQLException se3){
-                se3.printStackTrace();
-            }
         }
 
         return conn;
