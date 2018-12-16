@@ -12,18 +12,22 @@ public class LoginUser {
 
         Connection con = Conexion.getConnection();
 
-        Statement stat = null;
+        PreparedStatement stat = null;
         String sql = "";
 
         try {
-            //making a statement
-            stat = con.createStatement();
+
+
             //creating a query
-            sql = "SELECT * FROM usuarios WHERE nombre = \"" +
-                    pUserName + "\" AND contra = \"" + pUserPass + "\"";
+            sql = "SELECT * FROM usuarios WHERE nombre=? AND contra=?";
+
+            //making a statement
+            stat = con.prepareStatement(sql);
+            stat.setString(1,pUserName);
+            stat.setString(2,pUserPass);
 
             //Execute a query
-            ResultSet rs = stat.executeQuery(sql);
+            ResultSet rs = stat.executeQuery();
 
             // Extract data from resulset
             if(rs.next()){
