@@ -29,6 +29,7 @@
             <button class="w3-button w3-white w3-border w3-border-blue w3-round-large">Registrarse</button>
         </p>
     </form>
+    <div class="w3-panel w3-red">${errorMessage}</div>
 </div>
 
 <div class="w3-threequarter w3-display-bottommiddle">
