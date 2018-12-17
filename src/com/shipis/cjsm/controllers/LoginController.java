@@ -17,9 +17,9 @@ public class LoginController extends HttpServlet {
         //validacion de datos
         if(myLoginUser.isValidUserLogin(request.getParameter("fUsuario"), request.getParameter("fContra"))){
             //de ser correctos los datos redirigimos a la pagina principal de paso se van los atributos
-            int idUser = myLoginUser.getRol(request.getParameter("fUsuario"), request.getParameter("fContra"));
+            int rolUser = myLoginUser.getRol(request.getParameter("fUsuario"), request.getParameter("fContra"));
             request.setAttribute("usuario", request.getParameter("fUsuario"));
-            request.setAttribute("id",idUser);
+            request.setAttribute("rol",rolUser);
             request.getRequestDispatcher("/principal.jsp").forward(request,response);
         }else{
             //si no son correctos los datos enviamos mensaje de error a la misma página del login
