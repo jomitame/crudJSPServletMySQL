@@ -6,18 +6,14 @@ import java.sql.*;
 
 public class LoginUser {
 
-    public boolean isValidUserLogin (String pUserName, String pUserPass){
+    private ResultSet rs = null;
+    private Connection con = null;
+    private PreparedStatement stat = null;
+    private String sql = "";
 
-        boolean isValidUser = false;
-
-        Connection con = Conexion.getConnection();
-
-        PreparedStatement stat = null;
-        String sql = "";
-
-        try {
-
-
+    private ResultSet getResulset(String pUserName, String pUserPass){
+        con = Conexion.getConnection();
+        try{
             //creating a query
             sql = "SELECT * FROM usuarios WHERE nombre=? AND contra=?";
 
@@ -27,13 +23,25 @@ public class LoginUser {
             stat.setString(2,pUserPass);
 
             //Execute a query
-            ResultSet rs = stat.executeQuery();
+            rs = stat.executeQuery();
 
+
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rs;
+    }
+
+    public boolean isValidUserLogin (String pUserName, String pUserPass){
+        boolean isValidUser = false;
+        rs = this.getResulset(pUserName,pUserPass);
+        try {
             // Extract data from resulset
             if(rs.next()){
                 isValidUser = true;
             }
-
             // Clean-up enviroment
             rs.close();
             stat.close();
@@ -49,6 +57,28 @@ public class LoginUser {
         }
 
         return isValidUser;
+    }
+
+    public int getRol(String pUserName, String pUserPass){
+        int id=0;
+        rs = this.getResulset(pUserName,pUserPass);
+        try{
+            if(rs.next()){
+                id = rs.getInt("rol");
+            }
+            rs.close();
+            stat.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try{
+                if(con!=null){con.close();}
+            }catch (SQLException se){
+                se.printStackTrace();
+            }
+        }
+
+        return id;
     }
 
 }
