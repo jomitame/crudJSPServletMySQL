@@ -32,9 +32,5 @@
     <div class="w3-panel w3-red">${errorMessage}</div>
 </div>
 
-<div class="w3-threequarter w3-display-bottommiddle">
-    <table></table>
-</div>
-
 </body>
 </html>
